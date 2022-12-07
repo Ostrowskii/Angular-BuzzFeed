@@ -28,6 +28,25 @@ export class QuizzComponent {
 
       this.questions = quizz_questions.questions;
       this.questionsSelected = this.questions[this.questionIndex];
+
+      this.questionIndex = 0;
+      this.questionMaxIndex = this.questions.length;
+    }
+  }
+
+  playerChoose(value:string){
+    this.answers.push(value)
+    this.nextStep()
+    // console.log(this.answers)
+  }
+
+  async nextStep(){
+    this.questionIndex+=1;
+
+    if(this.questionMaxIndex > this.questionIndex){
+      this.questionsSelected = this.questions[this.questionIndex];
+    }else{
+      this.finished = true;
     }
   }
 }
